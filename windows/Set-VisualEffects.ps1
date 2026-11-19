@@ -34,6 +34,7 @@ Set-ItemProperty -Path $visualFxPath -Name "VisualFXSetting" -Type DWord -Value 
 $explorerAdvPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
 Set-ItemProperty -Path $explorerAdvPath -Name "IconsOnly" -Type DWord -Value 0           # Thumbnails
 Set-ItemProperty -Path $explorerAdvPath -Name "ListviewAlphaSelect" -Type DWord -Value 1 # Selection box
+Set-ItemProperty -Path $explorerAdvPath -Name "ListviewShadow" -Type DWord -Value 1      # Icon shadows
 
 # Animations (Disable)
 $anim = New-Object ANIMATIONINFO
@@ -49,7 +50,6 @@ $anim.iMinAnimate = 0
 [Win32VisualEffects]::SystemParametersInfo(0x101B, 0, [IntPtr]0, $SPIF) | Out-Null # Cursor shadow
 
 Set-ItemProperty -Path $explorerAdvPath -Name "TaskbarAnimations" -Type DWord -Value 0 # Taskbar anim
-Set-ItemProperty -Path $explorerAdvPath -Name "ListviewShadow" -Type DWord -Value 0    # Icon shadows
 
 $dwmPath = "HKCU:\Software\Microsoft\Windows\DWM"
 Set-ItemProperty -Path $dwmPath -Name "EnableAeroPeek" -Type DWord -Value 0            # Peek
@@ -71,6 +71,7 @@ Set-ItemProperty -Path $explorerAdvPath -Name "TaskbarGlomLevel" -Type DWord -Va
 Set-ItemProperty -Path $explorerAdvPath -Name "MMTaskbarEnabled" -Type DWord -Value 1   # All displays
 Set-ItemProperty -Path $explorerAdvPath -Name "MMTaskbarMode" -Type DWord -Value 2      # Active display
 Set-ItemProperty -Path $explorerAdvPath -Name "MMTaskbarGlomLevel" -Type DWord -Value 2 # Never combine MM
+Set-ItemProperty -Path $explorerAdvPath -Name "TaskbarSmallIcons" -Type DWord -Value 1  # Small taskbar icons
 
 # Restart
 Stop-Process -Name explorer -Force -ErrorAction SilentlyContinue

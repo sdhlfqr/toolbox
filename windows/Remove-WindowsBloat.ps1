@@ -1,3 +1,5 @@
+#Requires -RunAsAdministrator
+
 # Packages
 $packages = @(
 	"Clipchamp.Clipchamp",

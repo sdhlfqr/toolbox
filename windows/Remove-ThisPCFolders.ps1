@@ -1,3 +1,5 @@
+#Requires -RunAsAdministrator
+
 # Folders
 $folderGuids = @(
     "{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}", # 3D Objects

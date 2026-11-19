@@ -13,6 +13,9 @@ $directories = Get-ChildItem -Path $rootPath -Directory -Recurse |
     Sort-Object { $_.FullName.Length } -Descending
 
 foreach ($directory in $directories) {
+    if (Get-ChildItem -Path $directory.FullName -Force) {
+        continue
+    }
     $mdFilePath = Join-Path -Path $directory.Parent.FullName -ChildPath "$($directory.Name).md"
     New-Item -Path $mdFilePath -ItemType File -Force | Out-Null
     Remove-Item -Path $directory.FullName -Force
